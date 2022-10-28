@@ -50,10 +50,9 @@ public class Car_Controller : MonoBehaviour
     
     public GameObject Steering_wheel;
 
-    private bool isCarGrounded;
-    public float alignToGroundTime;
-    public LayerMask Plane;
-    public float pp;
+    
+
+    [SerializeField] GameObject pantallaPausa;
 
     // Start is called before the first frame update
     private void Start()
@@ -66,6 +65,7 @@ public class Car_Controller : MonoBehaviour
     {
         AnimateWheels();
         GetInputs();
+     
 
     }
 
@@ -92,7 +92,10 @@ public class Car_Controller : MonoBehaviour
             
             frontPassengerW.motorTorque = inputY * maxAcceleration * 0 * Time.deltaTime;
 
-}
+            rearDriveW.brakeTorque = Brake;
+            rearPassengerW.brakeTorque = Brake;
+
+        }
         if (inputX < 0) //Giro izquierda
         {
             //wheel.collider.motorTorque = inputY * maxAcceleration * 500 * Time.deltaTime;
@@ -107,8 +110,8 @@ public class Car_Controller : MonoBehaviour
             frontDriveW.motorTorque = inputY * maxAcceleration * 500 * Time.deltaTime;
             frontPassengerW.motorTorque = inputY * maxAcceleration * 500 * Time.deltaTime;
 
-            rearDriveW.brakeTorque = Brake;
-            rearPassengerW.brakeTorque = Brake;
+            rearDriveW.brakeTorque = inputY*Brake;
+            rearPassengerW.brakeTorque = inputY*Brake;
         }
 
         foreach (var wheel in wheels) { 
@@ -117,6 +120,7 @@ public class Car_Controller : MonoBehaviour
             {
 
                 wheel.collider.brakeTorque = Brake*10000;
+                //frontPassengerW.brakeTorque = Brake * 10000;
                 //element.rightWheel.brakeTorque = 1000;
 
             }
@@ -217,4 +221,6 @@ public class Car_Controller : MonoBehaviour
         }
         
     }
+
+    
 }
