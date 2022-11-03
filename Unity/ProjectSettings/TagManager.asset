@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Car
+  - Wheel1
+  - Wheel2
+  - Wheel3
+  - Wheel4
+  - Valla1
+  - Valla2
+  - Cono1
+  - Cono2
+  - Cono3
+  - Cono4
+  - Cono5
+  - Barrera1
+  - Barrera2
+  - Conos
   layers:
   - Default
   - TransparentFX
